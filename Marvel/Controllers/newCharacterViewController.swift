@@ -9,12 +9,10 @@
 import UIKit
 import IGListKit
 
-protocol Detailable {
-    func showDetailsOf(character: Character)
-}
-
 class newCharacterViewController: UIViewController {
-
+    
+    @IBOutlet weak var collectionView: IGListCollectionView!
+    
     var apiManager: MarvelAPICalls = MarvelAPIManager()
     var characters: [Character] = []
     
@@ -28,8 +26,6 @@ class newCharacterViewController: UIViewController {
     lazy var adapter: IGListAdapter = {
         return IGListAdapter(updater: IGListAdapterUpdater(), viewController: self, workingRangeSize: 0)
     }()
-    
-    @IBOutlet weak var collectionView: IGListCollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -27,8 +27,8 @@ class PictureCollectionCell: UICollectionViewCell, NibReusable, Charactable {
     func setup(character: Character) {
         if let thumbImage = character.thumImage {
             self.picture.download(image: (thumbImage.fullPath()))
-            name.text = character.name
-            characterDescription.text = character.bio.isEmpty ? "No description" : character.bio
         }
+        name.text = character.name
+        characterDescription.text = character.bio.isEmpty ? "No description" : character.bio
     }
 }

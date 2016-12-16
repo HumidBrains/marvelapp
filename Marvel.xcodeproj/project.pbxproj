@@ -51,6 +51,9 @@
 		BAC38F861E04451000B7BE3A /* EmbeddedCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAC38F851E04451000B7BE3A /* EmbeddedCollectionCell.xib */; };
 		BAC38F8A1E04451800B7BE3A /* SearchCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAC38F881E04451800B7BE3A /* SearchCollectionCell.xib */; };
 		BAC38F8B1E0445D500B7BE3A /* PictureCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAC38F871E04451800B7BE3A /* PictureCollectionCell.xib */; };
+		BAC38F991E0451E400B7BE3A /* tableCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC38F981E0451E400B7BE3A /* tableCharacterViewController.swift */; };
+		BAC38F9B1E0452E900B7BE3A /* TableSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC38F9A1E0452E900B7BE3A /* TableSectionController.swift */; };
+		BAC38FA11E0467D300B7BE3A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAC38FA01E0467D300B7BE3A /* Images.xcassets */; };
 		BAF6CDEA1E02C3B900D293EE /* newCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF6CDE91E02C3B900D293EE /* newCharacterViewController.swift */; };
 		BAF6CDED1E02C46E00D293EE /* PictureSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF6CDEC1E02C46E00D293EE /* PictureSectionController.swift */; };
 		BAF6CDF61E02C53700D293EE /* PictureCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF6CDF41E02C53700D293EE /* PictureCollectionCell.swift */; };
@@ -120,6 +123,9 @@
 		BAC38F851E04451000B7BE3A /* EmbeddedCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmbeddedCollectionCell.xib; sourceTree = "<group>"; };
 		BAC38F871E04451800B7BE3A /* PictureCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PictureCollectionCell.xib; sourceTree = "<group>"; };
 		BAC38F881E04451800B7BE3A /* SearchCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchCollectionCell.xib; sourceTree = "<group>"; };
+		BAC38F981E0451E400B7BE3A /* tableCharacterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tableCharacterViewController.swift; sourceTree = "<group>"; };
+		BAC38F9A1E0452E900B7BE3A /* TableSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableSectionController.swift; sourceTree = "<group>"; };
+		BAC38FA01E0467D300B7BE3A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
 		BAF6CDE91E02C3B900D293EE /* newCharacterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newCharacterViewController.swift; sourceTree = "<group>"; };
 		BAF6CDEC1E02C46E00D293EE /* PictureSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureSectionController.swift; sourceTree = "<group>"; };
 		BAF6CDF41E02C53700D293EE /* PictureCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureCollectionCell.swift; sourceTree = "<group>"; };
@@ -163,6 +169,7 @@
 				9939CFC81DDA245A008CE399 /* CharacterViewController.swift */,
 				9939CFC61DDA244A008CE399 /* CharactersViewController.swift */,
 				BAF6CDE91E02C3B900D293EE /* newCharacterViewController.swift */,
+				BAC38F981E0451E400B7BE3A /* tableCharacterViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -179,6 +186,7 @@
 		9939CFCB1DDA26A3008CE399 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BAC38FA01E0467D300B7BE3A /* Images.xcassets */,
 				9922F1561DFDB69200237BFE /* ColorPalette.swift */,
 				99E1DFEF1DDA1F4C006F9D96 /* Info.plist */,
 				99D0DEBD1DE26D8100FE34D7 /* Storyboard.swift */,
@@ -380,6 +388,7 @@
 				BAF6CDEC1E02C46E00D293EE /* PictureSectionController.swift */,
 				BA07F9FB1E03189F00FFADDE /* PortraitSectionController.swift */,
 				BA07FA051E0323C100FFADDE /* SearchSectionController.swift */,
+				BAC38F9A1E0452E900B7BE3A /* TableSectionController.swift */,
 			);
 			path = "Section Controllers";
 			sourceTree = "<group>";
@@ -430,6 +439,7 @@
 				99E1DFDE1DDA1F4C006F9D96 /* Resources */,
 				65B66DF972813F1C9E6FAB9F /* [CP] Embed Pods Frameworks */,
 				572BC285D19F6AE624CEB662 /* [CP] Copy Pods Resources */,
+				BAC38F971E044F7800B7BE3A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -497,6 +507,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99FC2BCD1DDDB8C7006CB7EE /* CharacterTableCell.xib in Resources */,
+				BAC38FA11E0467D300B7BE3A /* Images.xcassets in Resources */,
 				99D0DEB61DE25AC900FE34D7 /* CharacterCollectionCell.xib in Resources */,
 				BAC38F861E04451000B7BE3A /* EmbeddedCollectionCell.xib in Resources */,
 				99E1DFEE1DDA1F4C006F9D96 /* LaunchScreen.storyboard in Resources */,
@@ -615,6 +626,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MarvelTests/Pods-MarvelTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		BAC38F971E044F7800B7BE3A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TALK:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -651,10 +675,12 @@
 				9939CFC91DDA245A008CE399 /* CharacterViewController.swift in Sources */,
 				99D0DEB41DE259F100FE34D7 /* CharacterCollectionCell.swift in Sources */,
 				99B248E31DDB427000027C10 /* CharacterTableCell.swift in Sources */,
+				BAC38F9B1E0452E900B7BE3A /* TableSectionController.swift in Sources */,
 				9939CFC71DDA244A008CE399 /* CharactersViewController.swift in Sources */,
 				99D0DEB21DE2598F00FE34D7 /* ItemsCollectionViewDatasource.swift in Sources */,
 				BA07F9FC1E03189F00FFADDE /* PortraitSectionController.swift in Sources */,
 				9939CFD41DDA333D008CE399 /* Character.swift in Sources */,
+				BAC38F991E0451E400B7BE3A /* tableCharacterViewController.swift in Sources */,
 				9922F1571DFDB69200237BFE /* ColorPalette.swift in Sources */,
 				99E1DFE41DDA1F4C006F9D96 /* AppDelegate.swift in Sources */,
 				BA07FA061E0323C100FFADDE /* SearchSectionController.swift in Sources */,

@@ -17,6 +17,12 @@ struct ThumbImage {
     func fullPath() -> String {
         return "\(path).\(imageExtension)"
     }
+    
+    init() {
+        path = "https://lh4.googleusercontent.com/-YsbRpTbPHBY/AAAAAAAAAAI/AAAAAAAAAAA/-VswE3XagAc/s128-c-k/photo"
+        imageExtension = "jpg"
+    }
+    
 }
 
 extension ThumbImage: Mappable {

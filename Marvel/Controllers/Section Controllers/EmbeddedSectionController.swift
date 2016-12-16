@@ -13,6 +13,11 @@ class EmbeddedSectionController: IGListSectionController, IGListSectionType {
     
     let searchToken: NSNumber = 0
     
+    init(characters: [IGListDiffable]) {
+        super.init()
+        self.characters = characters
+    }
+    
     lazy var adapter: IGListAdapter = {
         let adapter = IGListAdapter(updater: IGListAdapterUpdater(),
                                     viewController: self.viewController,
@@ -25,11 +30,6 @@ class EmbeddedSectionController: IGListSectionController, IGListSectionType {
         didSet {
         adapter.performUpdates(animated: true, completion: nil)
         }
-    }
-    
-    init(characters: [IGListDiffable]) {
-        super.init()
-        self.characters = characters
     }
     
     func numberOfItems() -> Int {

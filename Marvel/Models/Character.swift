@@ -10,6 +10,7 @@ import Foundation
 import ObjectMapper
 import IGListKit
 
+//TALK: change to class due IGListDiffable protocol
 class Character: Mappable {
     var id: Int = 0
     var name: String = ""
@@ -18,6 +19,13 @@ class Character: Mappable {
     
     convenience required init?(map: Map) {
         self.init()
+    }
+    
+    init() {
+        id = 99
+        name = "Rodrigo"
+        bio = "iOS Developer"
+        thumImage = ThumbImage()
     }
     
     func mapping(map: Map) {
@@ -36,12 +44,17 @@ extension Character: Equatable {
 
 extension Character: IGListDiffable {
     
+    //TALK: unique id
     public func diffIdentifier() -> NSObjectProtocol {
         return NSNumber(value: id)
     }
     
     public func isEqual(toDiffableObject object: IGListDiffable?) -> Bool {
         guard let object = object as? Character else {
+            return false
+        }
+        
+        if id != object.id || name != object.name {
             return false
         }
         
