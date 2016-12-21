@@ -1,8 +1,8 @@
 //
-//  Character.swift
+//  File.swift
 //  Marvel
 //
-//  Created by Thiago Lioy on 14/11/16.
+//  Created by Rodrigo Cavalcante on 21/12/16.
 //  Copyright © 2016 Thiago Lioy. All rights reserved.
 //
 
@@ -10,10 +10,10 @@ import Foundation
 import ObjectMapper
 import IGListKit
 
-class Character: Mappable {
+class Event: Mappable {
     var id: Int = 0
-    var name: String = ""
-    var bio: String = ""
+    var title: String = ""
+    var description: String = ""
     var thumImage: ThumbImage?
     
     convenience required init?(map: Map) {
@@ -22,26 +22,26 @@ class Character: Mappable {
     
     func mapping(map: Map) {
         id    <- map["id"]
-        name    <- map["name"]
-        bio     <- map["description"]
+        title    <- map["title"]
+        description     <- map["description"]
         thumImage    <- map["thumbnail"]
     }
 }
 
-extension Character: Equatable {
-    static public func ==(rhs: Character, lhs: Character) -> Bool {
+extension Event: Equatable {
+    static public func ==(rhs: Event, lhs: Event) -> Bool {
         return rhs.id == lhs.id
     }
 }
 
-extension Character: IGListDiffable {
+extension Event: IGListDiffable {
     
     public func diffIdentifier() -> NSObjectProtocol {
         return NSNumber(value: id)
     }
     
     public func isEqual(toDiffableObject object: IGListDiffable?) -> Bool {
-        guard let object = object as? Character else {
+        guard let object = object as? Event else {
             return false
         }
         

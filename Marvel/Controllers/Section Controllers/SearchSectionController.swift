@@ -50,10 +50,6 @@ final class SearchSectionController: IGListSectionController, IGListSectionType,
         delegate?.searchSectionController(self, didChangeText: searchText)
     }
     
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        delegate?.searchSectionController(self, didChangeText: "")
-    }
-    
     //MARK: IGListScrollDelegate
     
     func listAdapter(_ listAdapter: IGListAdapter, didScroll sectionController: IGListSectionController) {

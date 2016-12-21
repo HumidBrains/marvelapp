@@ -9,17 +9,21 @@
 import UIKit
 import Reusable
 
-class PortraitCollectionCell: UICollectionViewCell, NibReusable, Charactable {
+protocol Eventable {
+    func setup(event: Event)
+}
+
+class PortraitCollectionCell: UICollectionViewCell, NibReusable, Eventable {
 
     @IBOutlet weak var picture: UIImageView!
     @IBOutlet weak var name: UILabel!
     
     static func height() -> Double {
-        return 175.0
+        return 140.0
     }
     
     static func width() -> Double {
-        return 150.0
+        return 120.0
     }
     
     override func awakeFromNib() {
@@ -27,10 +31,10 @@ class PortraitCollectionCell: UICollectionViewCell, NibReusable, Charactable {
         // Initialization code
     }
 
-    func setup(character: Character) {
-        if let thumbImage = character.thumImage {
+    func setup(event: Event) {
+        if let thumbImage = event.thumImage {
             self.picture.download(image: (thumbImage.fullPath()))
-            self.name.text = character.name
+            self.name.text = event.title
         }
     }
     

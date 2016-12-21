@@ -13,28 +13,42 @@ protocol Detailable {
     func showDetailsOf(character: Character)
 }
 
-class newCharacterViewController: UIViewController {
+enum SectionController {
+    case grid
+    case row
+}
 
+class newCharacterViewController: UIViewController, SearchSectionControllerDelegate {
+    
     var apiManager: MarvelAPICalls = MarvelAPIManager()
+    var views: [IGListDiffable] = []
     var characters: [Character] = []
     
-    let portraitToken: NSNumber = 1
-    let searchToken: NSNumber = 2
+    var filterString: String = ""
     
-    var embeddedSectionController: EmbeddedSectionController? = nil
+    lazy var searchView: Search = {
+        return Search(delegate: self)
+    }()
     
-    var filterString = ""
+    func searchSectionController(_ sectionController: SearchSectionController, didChangeText text: String) {
+        filterString = text
+        adapter.performUpdates(animated: true, completion: nil)
+    }
+
+    let embeddedView: Embedded = Embedded()
+    
+    var sectionController: SectionController = .row
     
     lazy var adapter: IGListAdapter = {
         return IGListAdapter(updater: IGListAdapterUpdater(), viewController: self, workingRangeSize: 0)
     }()
+    
     
     @IBOutlet weak var collectionView: IGListCollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.collectionViewLayout = UICollectionViewFlowLayout()
-        
         fetchCharacters()
         
         adapter.collectionView = collectionView
@@ -52,10 +66,26 @@ class newCharacterViewController: UIViewController {
         apiManager.characters(query: query, skip: self.characters.count) { characters in
             if let characters = characters {
                 self.characters += characters
-                self.embeddedSectionController?.characters = self.characters
-                self.adapter.performUpdates(animated: true)
+                self.views += self.mMapToView(characters: characters)
+                self.adapter.performUpdates(animated: true, completion: nil)
             }
         }
+    }
+    
+    func mMapToView(characters: [Character]) -> [IGListDiffable] {
+        var items:[IGListDiffable] = []
+        if characters.count > 0 {
+            
+            let filter: [IGListDiffable]
+            
+            filter = characters.map{ (item: Character) -> CharactableView in
+                return CharactableView(character: item, sectionController: sectionController)
+                } as [IGListDiffable]
+            
+            items.append(contentsOf: filter)
+        }
+        
+        return items
     }
     
     override func viewDidLayoutSubviews() {
@@ -74,10 +104,16 @@ class newCharacterViewController: UIViewController {
     }
 }
 
-extension newCharacterViewController: SearchSectionControllerDelegate {
+extension newCharacterViewController {
+    @IBAction func showAsGrid(_ sender: UIButton) {
+        sectionController = .grid
+        self.views = self.mMapToView(characters: self.characters)
+        adapter.performUpdates(animated: true, completion: nil)
+    }
     
-    func searchSectionController(_ sectionController: SearchSectionController, didChangeText text: String) {
-        filterString = text
+    @IBAction func showAsTable(_ sender: UIButton) {
+        sectionController = .row
+        self.views = self.mMapToView(characters: self.characters)
         adapter.performUpdates(animated: true, completion: nil)
     }
 }
@@ -99,44 +135,30 @@ extension newCharacterViewController: IGListAdapterDataSource {
     
     func objects(for listAdapter: IGListAdapter) -> [IGListDiffable] {
         
-        var items:[IGListDiffable] = []
-        
-        if self.characters.count > 0 {
-            items = [searchToken as IGListDiffable]
-            items += [portraitToken as IGListDiffable]
-        
-            var filter: [IGListDiffable] = self.characters
-            
-            if filterString == "" {
-                filter = self.characters.map{ (item: Character) -> IGListDiffable in
-                    return item as IGListDiffable
-                }
-            } else {
-                filter = self.characters.filter { (item:Character) -> Bool in
-                    return item.name.lowercased().contains(filterString.lowercased()) }.map { $0 as IGListDiffable }
-            }
-            
-            embeddedSectionController?.characters = filter
-            return items + filter
+        guard filterString != "" else {
+            return [self.searchView as IGListDiffable] + [self.embeddedView] + self.views
         }
         
-        return items
+        let filter = self.views.flatMap({ (item) -> CharactableView? in
+            guard let item = item as? CharactableView else {
+                return nil
+            }
+            
+            return item
+        }).filter { (item) -> Bool in
+            item.character.name.lowercased().contains(self.filterString.lowercased())
+        }
+            
+        return [self.searchView as IGListDiffable] + [self.embeddedView] + (filter as [IGListDiffable])
     }
     
     func listAdapter(_ listAdapter: IGListAdapter, sectionControllerFor object: Any) -> IGListSectionController {
         
-        if let obj = object as? NSNumber, obj == portraitToken {
-            embeddedSectionController = EmbeddedSectionController(characters: self.characters)
-            if let embeddedSectionController = embeddedSectionController{
-                return embeddedSectionController
-            }
-        } else if let obj = object as? NSNumber, obj == searchToken {
-            let sectionController = SearchSectionController()
-            sectionController.delegate = self
-            return sectionController
+        if let object = object as? SectionControllerProtocol {
+            return object.sectionController()
         }
         
-        return PictureSectionController()
+        return SearchSectionController()
     }
     
     func emptyView(for listAdapter: IGListAdapter) -> UIView? { return nil }

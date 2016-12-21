@@ -1,20 +1,16 @@
 //
-//  PictureControlerCollectionViewCell.swift
+//  TableCollectionCell.swift
 //  Marvel
 //
-//  Created by Rodrigo Cavalcante on 15/12/16.
+//  Created by Rodrigo Cavalcante on 20/12/16.
 //  Copyright © 2016 Thiago Lioy. All rights reserved.
 //
 
 import UIKit
 import Reusable
 
-protocol Charactable {
-    func setup(character: Character)
-}
-
-class PictureCollectionCell: UICollectionViewCell, NibReusable, Charactable {
-
+class RowCollectionCell: UICollectionViewCell, NibReusable, Charactable {
+    
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var characterDescription: UILabel!
     @IBOutlet weak var picture: UIImageView!

@@ -11,25 +11,40 @@ import IGListKit
 
 class EmbeddedSectionController: IGListSectionController, IGListSectionType {
     
-    let searchToken: NSNumber = 0
+    var apiManager: MarvelAPICalls = MarvelAPIManager()
     
     lazy var adapter: IGListAdapter = {
         let adapter = IGListAdapter(updater: IGListAdapterUpdater(),
                                     viewController: self.viewController,
-                                    workingRangeSize: 0)
+                                    workingRangeSize: 3)
         adapter.dataSource = self
+        adapter.delegate = self
         return adapter
     }()
     
-    var characters: [IGListDiffable] = [] {
+    var events: [Portrait] = [] {
         didSet {
         adapter.performUpdates(animated: true, completion: nil)
         }
     }
     
-    init(characters: [IGListDiffable]) {
+    func fetchEvents() {
+        apiManager.event { events in
+            if let events = events {
+                self.events += self.mapToPortrait(events: events)
+            }
+        }
+    }
+    
+    func mapToPortrait(events: [Event]) -> [Portrait] {
+        return events.map{(item: Event) -> Portrait in
+            return Portrait(events: item)
+        }
+    }
+    
+    override init() {
         super.init()
-        self.characters = characters
+        fetchEvents()
     }
     
     func numberOfItems() -> Int {
@@ -59,9 +74,22 @@ class EmbeddedSectionController: IGListSectionController, IGListSectionType {
     
 }
 
+extension EmbeddedSectionController: IGListAdapterDelegate {
+    
+    func listAdapter(_ listAdapter: IGListAdapter!, didEndDisplaying object: Any!, at index: Int) {
+        
+    }
+    
+    func listAdapter(_ listAdapter: IGListAdapter!, willDisplay object: Any!, at index: Int) {
+        if self.events.count - 5 == index {
+            fetchEvents()
+        }
+    }
+}
+
 extension EmbeddedSectionController: IGListAdapterDataSource{
     func objects(for listAdapter: IGListAdapter) -> [IGListDiffable] {
-        return self.characters
+        return self.events
     }
     
     func listAdapter(_ listAdapter: IGListAdapter, sectionControllerFor object: Any) -> IGListSectionController {

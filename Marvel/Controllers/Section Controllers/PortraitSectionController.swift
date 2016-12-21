@@ -11,7 +11,7 @@ import IGListKit
 
 class PortraitSectionController: IGListSectionController, IGListSectionType {
     
-    var character: Character!
+    var portrait: Portrait!
     var delegate: CharactersDelegate?
     
     func numberOfItems() -> Int {
@@ -29,21 +29,19 @@ class PortraitSectionController: IGListSectionController, IGListSectionType {
         
         let cell = collectionContext!.dequeueReusableCell(withNibName: cellClass, bundle: Bundle.main, for: self, at: index)
         
-        if let cell = cell as? Charactable{
-            cell.setup(character: character)
+        if let cell = cell as? Eventable{
+            cell.setup(event: portrait.object )
         }
         
         return cell
     }
     
     func didUpdate(to object: Any) {
-        character = object as? Character
+        portrait = object as? Portrait
     }
     
     func didSelectItem(at index: Int) {
-        if let vc = self.viewController as? newCharacterViewController {
-            vc.showDetailsOf(character: character)
-        }
+   
     }
     
 }

@@ -23,6 +23,7 @@ fileprivate struct MarvelAPIConfig {
 enum MarvelAPI {
     case characters(String?, Int?)
     case character(String)
+    case event
 }
 
 extension MarvelAPI: TargetType {
@@ -35,12 +36,16 @@ extension MarvelAPI: TargetType {
             return "/v1/public/characters"
         case .character(let characterId):
             return "/v1/public/characters/\(characterId)"
+        case .event:
+            return "/v1/public/events"
+        
         }
+        
     }
     
     var method: Moya.Method {
         switch self {
-        case .characters, .character:
+        case .characters, .character, .event:
             return .get
         }
     }
@@ -71,6 +76,10 @@ extension MarvelAPI: TargetType {
         case .character(let characterId):
             return $.merge(authParameters(),
                            ["characterId": characterId])
+        
+        case .event:
+            return authParameters()
+        
         }
     }
     
