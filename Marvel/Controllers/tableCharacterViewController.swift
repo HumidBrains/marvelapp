@@ -34,12 +34,6 @@ class tableCharacterViewController: UIViewController {
         adapter.dataSource = self
     }
     
-    @IBAction func changeObject() {
-        let c = Character()
-        self.characters[0] = c
-        adapter.performUpdates(animated: true, completion: nil)
-    }
-    
     func fetchCharacters(for query: String? = nil) {
         apiManager.characters(query: query, skip: self.characters.count) { characters in
             if let characters = characters {
@@ -75,6 +69,8 @@ extension tableCharacterViewController: IGListAdapterDataSource {
     
     //TALK: SectionController for object
     func listAdapter(_ listAdapter: IGListAdapter, sectionControllerFor object: Any) -> IGListSectionController {
+        
+        print((object as! Character).name)
         return TableSectionController()
     }
     

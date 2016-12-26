@@ -13,7 +13,7 @@ import IGListKit
 import Reusable
 
 class TableSectionController: IGListSectionController {
-    var character: Character!
+    var character: Character?
 }
 
 //TALK: The infrastructure uses each IGListSectionType conforming object as a view model to populate and control cells as part of a section in a UICollectionView
@@ -29,7 +29,7 @@ extension TableSectionController: IGListSectionType {
     func cellForItem(at index: Int) -> UICollectionViewCell {
         let cell = collectionContext!.dequeueReusableCell(withNibName: PictureCollectionCell.reuseIdentifier, bundle: Bundle.main, for: self, at: index)
         
-        if let cell = cell as? Charactable{
+        if let cell = cell as? Charactable, let character = self.character{
             cell.setup(character: character)
         }
         
@@ -41,7 +41,7 @@ extension TableSectionController: IGListSectionType {
     }
     
     func didSelectItem(at index: Int) {
-        if let vc = self.viewController as? newCharacterViewController {
+        if let vc = self.viewController as? tableCharacterViewController, let character = self.character {
             vc.showDetailsOf(character: character)
         }
     }

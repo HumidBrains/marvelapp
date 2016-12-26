@@ -49,6 +49,7 @@ extension Character: IGListDiffable {
         return NSNumber(value: id)
     }
     
+    //TALK: should perform the same type of check as isEqual:, but without impacting performance characteristics like in Objective-C containers such as NSDictionary and NSSet.
     public func isEqual(toDiffableObject object: IGListDiffable?) -> Bool {
         guard let object = object as? Character else {
             return false
