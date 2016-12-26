@@ -28,5 +28,7 @@ class EmbeddedCollectionCell: UICollectionViewCell, NibReusable {
         self.collectionView.collectionViewLayout = layout
         self.collectionView.alwaysBounceVertical = false
         self.collectionView.alwaysBounceHorizontal = true
+        self.collectionView.showsHorizontalScrollIndicator = false
+        self.collectionView.showsVerticalScrollIndicator = false
     }    
 }

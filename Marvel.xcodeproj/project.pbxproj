@@ -60,6 +60,7 @@
 		BAC38F861E04451000B7BE3A /* EmbeddedCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAC38F851E04451000B7BE3A /* EmbeddedCollectionCell.xib */; };
 		BAC38F8A1E04451800B7BE3A /* SearchCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAC38F881E04451800B7BE3A /* SearchCollectionCell.xib */; };
 		BAC38F8B1E0445D500B7BE3A /* GridCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAC38F871E04451800B7BE3A /* GridCollectionCell.xib */; };
+		BACE5AA11E116844000B5A90 /* LoadmoreCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BACE5AA01E116844000B5A90 /* LoadmoreCollectionCell.xib */; };
 		BAF6CDEA1E02C3B900D293EE /* newCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF6CDE91E02C3B900D293EE /* newCharacterViewController.swift */; };
 		BAF6CDED1E02C46E00D293EE /* GridSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF6CDEC1E02C46E00D293EE /* GridSectionController.swift */; };
 		BAF6CDF61E02C53700D293EE /* GridCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF6CDF41E02C53700D293EE /* GridCollectionCell.swift */; };
@@ -138,6 +139,7 @@
 		BAC38F851E04451000B7BE3A /* EmbeddedCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmbeddedCollectionCell.xib; sourceTree = "<group>"; };
 		BAC38F871E04451800B7BE3A /* GridCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GridCollectionCell.xib; sourceTree = "<group>"; };
 		BAC38F881E04451800B7BE3A /* SearchCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchCollectionCell.xib; sourceTree = "<group>"; };
+		BACE5AA01E116844000B5A90 /* LoadmoreCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadmoreCollectionCell.xib; sourceTree = "<group>"; };
 		BAF6CDE91E02C3B900D293EE /* newCharacterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newCharacterViewController.swift; sourceTree = "<group>"; };
 		BAF6CDEC1E02C46E00D293EE /* GridSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridSectionController.swift; sourceTree = "<group>"; };
 		BAF6CDF41E02C53700D293EE /* GridCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionCell.swift; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 				BA07F9FE1E03191E00FFADDE /* PortraitCollectionCell.xib */,
 				BAC38F881E04451800B7BE3A /* SearchCollectionCell.xib */,
 				BA843A7F1E09A4F10038B71A /* RowCollectionCell.xib */,
+				BACE5AA01E116844000B5A90 /* LoadmoreCollectionCell.xib */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				99E1DFE91DDA1F4C006F9D96 /* Main.storyboard in Resources */,
 				BAC38F8A1E04451800B7BE3A /* SearchCollectionCell.xib in Resources */,
 				BA07FA001E03191E00FFADDE /* PortraitCollectionCell.xib in Resources */,
+				BACE5AA11E116844000B5A90 /* LoadmoreCollectionCell.xib in Resources */,
 				BAC38F8B1E0445D500B7BE3A /* GridCollectionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
