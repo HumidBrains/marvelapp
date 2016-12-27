@@ -44,7 +44,7 @@ extension Character: Equatable {
 
 extension Character: IGListDiffable {
     
-    //TALK: unique id
+    //TALK: unique id (identifies the object)
     public func diffIdentifier() -> NSObjectProtocol {
         return NSNumber(value: id)
     }
