@@ -68,10 +68,10 @@ extension MarvelAPI: TargetType {
             
             if let skip = skip {
                 return $.merge(authParameters(),
-                               ["offset": skip])
+                               ["offset": skip],["limit": 100])
             }
             
-            return authParameters()
+            return $.merge(authParameters(),["limit": 100])
             
         case .character(let characterId):
             return $.merge(authParameters(),

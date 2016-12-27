@@ -158,7 +158,7 @@ extension newCharacterViewController: IGListAdapterDataSource {
             return object.sectionController()
         }
         
-        return SearchSectionController()
+        return IGListSectionController()
     }
     
     func emptyView(for listAdapter: IGListAdapter) -> UIView? { return nil }
