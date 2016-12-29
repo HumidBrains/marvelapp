@@ -21,13 +21,6 @@ class Character: Mappable {
         self.init()
     }
     
-    init() {
-        id = 99
-        name = "Rodrigo"
-        bio = "iOS Developer"
-        thumImage = ThumbImage()
-    }
-    
     func mapping(map: Map) {
         id    <- map["id"]
         name    <- map["name"]
